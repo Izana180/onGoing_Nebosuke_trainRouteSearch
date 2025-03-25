@@ -19,6 +19,8 @@ class CustomBasicInput extends HookConsumerWidget {
     this.subText,
     this.subTextColor,
     this.errText,
+    this.isDeparture = false,
+    this.isArrival = false,
   }) : super(key: key);
 
   final String? hintText;
@@ -33,6 +35,8 @@ class CustomBasicInput extends HookConsumerWidget {
   final String? subText;
   final Color? subTextColor;
   final String? errText;
+  final bool isDeparture;
+  final bool isArrival;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -98,7 +102,30 @@ class CustomBasicInput extends HookConsumerWidget {
           focusNode: focusNode,
           controller: textEditingController,
           obscureText: isPassword,
+          // 出発、到着アイコンのスタイル指定
           decoration: InputDecoration(
+            prefixIcon: isDeparture || isArrival
+              ? Container(
+                height: 30,
+                width: 30,
+                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                decoration: BoxDecoration(
+                  color: isDeparture
+                  ? CustomColors.departureButtonColor
+                  : CustomColors.arrivalButtonColor,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    isDeparture ? '出発' : '到着',
+                    style: const TextStyle(
+                      color: CustomColors.baseWhite,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            : null,
             fillColor: isUseThinBlack ? CustomColors.minBlack : CustomColors.inputBlack,
             filled: true,
             hintText: hintText ?? '入力してください',
