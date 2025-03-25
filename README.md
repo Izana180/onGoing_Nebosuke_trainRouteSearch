@@ -1,3 +1,3 @@
 # norikae
 
-A new Flutter project.
+乗り遅れ、寝過ごし常習者のための乗換案内アプリ。
