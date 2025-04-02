@@ -28,6 +28,20 @@ class TopPage extends HookConsumerWidget {
       return CustomSelectItem<int>(value: day, label: '$day日');
     },
   );
+  List<CustomSelectItem> selectHour = List.generate(
+    24,
+    (index) {
+      int hour = index+1;
+      return CustomSelectItem<int>(value: hour, label: '$hour時');
+    },
+  );
+  List<CustomSelectItem> selectMinute = List.generate(
+    60,
+    (index) {
+      int minute = index+1;
+      return CustomSelectItem<int>(value: minute, label: '$minute分');
+    },
+  );
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,24 +54,25 @@ class TopPage extends HookConsumerWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            const SizedBox(height:24),
             Image.asset(
               'assets/img/nebosukeLogo.png',
               width: screenWidth * 0.75,
             ),
-            SizedBox(height:24),
+            const SizedBox(height:24),
             CustomBasicInput(
               isDeparture: true,
               hintText: '出発駅を入力',
               textEditingController: departureController
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             CustomBasicInput(
               isArrival: true,
               hintText: '到着駅を入力',
               textEditingController: arrivalController
             ),
-            SizedBox(height: 12),
-            // 年月日を横並びに表示
+            const SizedBox(height: 12),
+            // 年月日の入力枠を横並びに表示
             // TODO:今日の日付をデフォルト表示するか、現在時刻に設定するボタンを追加
             Row(
               children: [
@@ -71,7 +86,7 @@ class TopPage extends HookConsumerWidget {
                 ),
                 const SizedBox(width: 10),
                 SizedBox(
-                  width: screenWidth * 0.2,
+                  width: screenWidth * 0.22,
                   child: CustomSelectBox<int>(
                     value: selectMonthState,
                     hintText: '月',
@@ -80,14 +95,36 @@ class TopPage extends HookConsumerWidget {
                 ),
                 const SizedBox(width: 10),
                 SizedBox(
-                  width: screenWidth * 0.2,
+                  width: screenWidth * 0.22,
                   child: CustomSelectBox<int>(
                     value: selectDayState,
                     hintText: '日',
                     items: selectDay,
                   ),
                 )
-            ],)
+            ],),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                SizedBox(
+                  width: screenWidth * 0.22,
+                  child: CustomSelectBox<int>(
+                    value: selectHourState,
+                    hintText: '時',
+                    items: selectHour,
+                  )
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  width: screenWidth * 0.22,
+                  child: CustomSelectBox<int>(
+                    value: selectMinuteState,
+                    hintText: '分',
+                    items: selectMinute,
+                  )
+                ),
+              ],
+            ),
           ],
         ),
       ),
