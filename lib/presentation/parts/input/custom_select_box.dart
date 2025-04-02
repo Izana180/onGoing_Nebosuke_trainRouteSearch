@@ -11,12 +11,14 @@ class CustomSelectBox<T> extends HookConsumerWidget {
     required this.items,
     this.hintText,
     this.labelText,
+    this.defaultValue,
   });
 
   final StateProvider<T?> value;
   final List<CustomSelectItem> items;
   final String? hintText;
   final String? labelText;
+  final T? defaultValue;
 
   // 外枠
   final outlineInputBorder = const OutlineInputBorder(
@@ -28,6 +30,12 @@ class CustomSelectBox<T> extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedValue = ref.watch(value);
+
+    if(selectedValue == null && defaultValue != null){
+      ref.read(value.notifier).state = defaultValue;
+    }
+    
     return Column(
       children: [
         // ラベル
