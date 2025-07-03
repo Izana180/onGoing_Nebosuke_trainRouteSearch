@@ -12,6 +12,7 @@ class CustomSelectBox<T> extends HookConsumerWidget {
     this.hintText,
     this.labelText,
     this.defaultValue,
+    this.onChanged,
   });
 
   final StateProvider<T?> value;
@@ -19,6 +20,7 @@ class CustomSelectBox<T> extends HookConsumerWidget {
   final String? hintText;
   final String? labelText;
   final T? defaultValue;
+  final ValueChanged<T?>? onChanged;
 
   // 外枠
   final outlineInputBorder = const OutlineInputBorder(

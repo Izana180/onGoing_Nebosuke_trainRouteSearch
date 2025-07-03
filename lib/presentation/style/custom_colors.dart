@@ -13,6 +13,8 @@ class CustomColors {
   static const baseGray5 = Color(0xdd9999a3);
   static const grassGreen = Color(0xff1b701e);
   static const wineRed = Color(0xff701b1b);
+  static const lightBlue = Color(0xff4fc3f7);
+  static const themeBlue = Color(0xff2572d2);
   static const deepBlue = Color(0xff1b1b6f);
   static const strongRed = Color(0xffe91917);
 
@@ -24,9 +26,19 @@ class CustomColors {
   static const blackBackground = black;
 
   static const requiredTextColor = strongRed;
-  static const textColor = black;
+  static const textColor = baseWhite;
   static const inputBlack = midThinBlack;
 
   static const departureButtonColor = grassGreen;
   static const arrivalButtonColor = wineRed;
+
+  // ボタン用のグラデーション
+  static const baseGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [
+      lightBlue,
+      themeBlue
+    ],
+  );
 }
