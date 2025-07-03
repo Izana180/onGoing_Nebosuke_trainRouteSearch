@@ -87,6 +87,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectYearState,
                     hintText: '年',
                     items: selectYear,
+                    onChanged: (v) => ref.read(selectYearState.notifier).state = v,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -96,6 +97,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectMonthState,
                     hintText: '月',
                     items: selectMonth,
+                    onChanged: (v) => ref.read(selectMonthState.notifier).state = v,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -105,6 +107,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectDayState,
                     hintText: '日',
                     items: selectDay,
+                    onChanged: (v) => ref.read(selectDayState.notifier).state = v,
                   ),
                 )
             ],),
@@ -117,6 +120,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectHourState,
                     hintText: '時',
                     items: selectHour,
+                    onChanged: (v) => ref.read(selectHourState.notifier).state = v,
                   )
                 ),
                 const SizedBox(width: 10),
@@ -126,6 +130,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectMinuteState,
                     hintText: '分',
                     items: selectMinute,
+                    onChanged: (v) => ref.read(selectMinuteState.notifier).state = v,
                   )
                 ),
                 const SizedBox(width: 10),
@@ -135,6 +140,7 @@ class TopPage extends HookConsumerWidget {
                   child: CustomSelectBox<String>(
                     value: isArriveOrDepartureState,
                     items: isArriveOrDeparture,
+                    onChanged: (v) => ref.read(isArriveOrDepartureState.notifier).state = v,
                   )
                 ),
               ],
