@@ -5,3 +5,4 @@ final selectMonthState = StateProvider<int?>((ref) => null);
 final selectDayState = StateProvider<int?>((ref) => null);
 final selectHourState = StateProvider<int?>((ref) => null);
 final selectMinuteState = StateProvider<int?>((ref) => null);
+final isArriveOrDepartureState = StateProvider<String?>((ref) => '出発');

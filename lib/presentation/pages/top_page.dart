@@ -7,41 +7,45 @@ import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_select
 
 class TopPage extends HookConsumerWidget {
   // 年月日の選択肢を生成
-  List<CustomSelectItem> selectYear = List.generate(
+  List<CustomSelectItem<int>> selectYear = List.generate(
     2025 - 2020 + 1,  // 要素数
     (index) {
       int year = 2020 + index;
       return CustomSelectItem<int>(value: year, label: '$year年');
     },
   );
-  List<CustomSelectItem> selectMonth = List.generate(
+  List<CustomSelectItem<int>> selectMonth = List.generate(
     12,
     (index) {
       int month = index+1;
       return CustomSelectItem<int>(value: month, label: '$month月');
     },
   );
-  List<CustomSelectItem> selectDay = List.generate(
+  List<CustomSelectItem<int>> selectDay = List.generate(
     31,
     (index) {
       int day = index+1;
       return CustomSelectItem<int>(value: day, label: '$day日');
     },
   );
-  List<CustomSelectItem> selectHour = List.generate(
+  List<CustomSelectItem<int>> selectHour = List.generate(
     24,
     (index) {
       int hour = index+1;
       return CustomSelectItem<int>(value: hour, label: '$hour時');
     },
   );
-  List<CustomSelectItem> selectMinute = List.generate(
+  List<CustomSelectItem<int>> selectMinute = List.generate(
     60,
     (index) {
-      int minute = index+1;
+      int minute = index;
       return CustomSelectItem<int>(value: minute, label: '$minute分');
     },
   );
+  List<CustomSelectItem<String>> isArriveOrDeparture = [
+    const CustomSelectItem<String>(value: '出発', label: '出発'),
+    const CustomSelectItem<String>(value: '到着', label: '到着'),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -121,6 +125,15 @@ class TopPage extends HookConsumerWidget {
                     value: selectMinuteState,
                     hintText: '分',
                     items: selectMinute,
+                  )
+                ),
+                const SizedBox(width: 10),
+                // 出発、到着 初期値は出発
+                SizedBox(
+                  width: screenWidth * 0.22,
+                  child: CustomSelectBox<String>(
+                    value: isArriveOrDepartureState,
+                    items: isArriveOrDeparture,
                   )
                 ),
               ],

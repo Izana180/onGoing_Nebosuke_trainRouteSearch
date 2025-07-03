@@ -35,7 +35,7 @@ class CustomSelectBox<T> extends HookConsumerWidget {
     if(selectedValue == null && defaultValue != null){
       ref.read(value.notifier).state = defaultValue;
     }
-    
+
     return Column(
       children: [
         // ラベル
@@ -96,7 +96,7 @@ class CustomSelectBox<T> extends HookConsumerWidget {
               )
               .toList(),
           onChanged: (value) {
-            ref.read(this.value.notifier).update((state) => state = value as T?);
+            ref.read(this.value.notifier).update((state) => value);
           },
         ),
       ],
@@ -111,6 +111,6 @@ class CustomSelectItem<T> {
     required this.label,
   });
 
-  final T value;
+  final T? value;
   final String label;
 }
