@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:nebosuke_trainroutesearch/domain/top_page_domain.dart';
 import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_basic_input.dart';
 import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_select_box.dart';
+import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_button.dart';
 
 class TopPage extends HookConsumerWidget {
   // 年月日の選択肢を生成
@@ -138,6 +139,11 @@ class TopPage extends HookConsumerWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 48),
+            CustomButton(
+              text: 'ルート検索',
+              onPressed: () {},
+            )
           ],
         ),
       ),
