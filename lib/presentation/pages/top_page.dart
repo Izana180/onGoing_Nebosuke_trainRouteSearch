@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:nebosuke_trainroutesearch/domain/top_page_domain.dart';
-import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_basic_input.dart';
-import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_select_box.dart';
-import 'package:nebosuke_trainroutesearch/presentation/parts/input/custom_button.dart';
+import 'package:nebosuke_trainroutesearch/presentation/parts/custom_basic_input.dart';
+import 'package:nebosuke_trainroutesearch/presentation/parts/custom_select_box.dart';
+import 'package:nebosuke_trainroutesearch/presentation/parts/custom_button.dart';
 
 class TopPage extends HookConsumerWidget {
   // 年月日の選択肢を生成
