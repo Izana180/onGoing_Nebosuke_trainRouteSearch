@@ -32,7 +32,7 @@ class TopPage extends HookConsumerWidget {
   List<CustomSelectItem<int>> selectHour = List.generate(
     24,
     (index) {
-      int hour = index+1;
+      int hour = index;
       return CustomSelectItem<int>(value: hour, label: '$hour時');
     },
   );
