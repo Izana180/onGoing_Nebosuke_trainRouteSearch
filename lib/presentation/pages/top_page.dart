@@ -38,10 +38,14 @@ class TopPage extends HookConsumerWidget {
   List<CustomSelectItem> selectMinute = List.generate(
     60,
     (index) {
-      int minute = index+1;
+      int minute = index;
       return CustomSelectItem<int>(value: minute, label: '$minute分');
     },
   );
+  List<CustomSelectItem> isArriveOrDeparture = [
+    const CustomSelectItem<String>(value: '出発', label: '出発'),
+    const CustomSelectItem<String>(value: '到着', label: '到着'),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -121,6 +125,15 @@ class TopPage extends HookConsumerWidget {
                     value: selectMinuteState,
                     hintText: '分',
                     items: selectMinute,
+                  )
+                ),
+                const SizedBox(width: 10),
+                // 出発、到着 初期値は出発
+                SizedBox(
+                  width: screenWidth * 0.22,
+                  child: CustomSelectBox<String>(
+                    value: isArriveOrDepartureState,
+                    items: isArriveOrDeparture,
                   )
                 ),
               ],
