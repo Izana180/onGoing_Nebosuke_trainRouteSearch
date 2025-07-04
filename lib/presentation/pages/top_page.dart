@@ -44,9 +44,9 @@ class TopPage extends HookConsumerWidget {
       return CustomSelectItem<int>(value: minute, label: '$minute分');
     },
   );
-  List<CustomSelectItem<String>> isArriveOrDeparture = [
-    const CustomSelectItem<String>(value: '出発', label: '出発'),
-    const CustomSelectItem<String>(value: '到着', label: '到着'),
+  List<CustomSelectItem<int>> isArriveOrDeparture = [
+    const CustomSelectItem<int>(value: 0, label: '出発'),
+    const CustomSelectItem<int>(value: 1, label: '到着'),
   ];
 
   @override
@@ -79,7 +79,6 @@ class TopPage extends HookConsumerWidget {
             ),
             const SizedBox(height: 12),
             // 年月日の入力枠を横並びに表示
-            // TODO:今日の日付をデフォルト表示するか、現在時刻に設定するボタンを追加
             Row(
               children: [
                 SizedBox(
@@ -88,7 +87,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectYearState,
                     hintText: '年',
                     items: selectYear,
-                    onChanged: (v) => ref.read(selectYearState.notifier).state = v,
+                    onChanged: (v) => ref.read(selectYearState.notifier).state = v ?? ref.read(selectYearState),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -98,7 +97,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectMonthState,
                     hintText: '月',
                     items: selectMonth,
-                    onChanged: (v) => ref.read(selectMonthState.notifier).state = v,
+                    onChanged: (v) => ref.read(selectMonthState.notifier).state = v ?? ref.read(selectMonthState),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -108,7 +107,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectDayState,
                     hintText: '日',
                     items: selectDay,
-                    onChanged: (v) => ref.read(selectDayState.notifier).state = v,
+                    onChanged: (v) => ref.read(selectDayState.notifier).state = v ?? ref.read(selectDayState),
                   ),
                 )
             ],),
@@ -121,7 +120,7 @@ class TopPage extends HookConsumerWidget {
                     value: selectHourState,
                     hintText: '時',
                     items: selectHour,
-                    onChanged: (v) => ref.read(selectHourState.notifier).state = v,
+                    onChanged: (v) => ref.read(selectHourState.notifier).state = v ?? ref.read(selectHourState),
                   )
                 ),
                 const SizedBox(width: 10),
@@ -131,17 +130,17 @@ class TopPage extends HookConsumerWidget {
                     value: selectMinuteState,
                     hintText: '分',
                     items: selectMinute,
-                    onChanged: (v) => ref.read(selectMinuteState.notifier).state = v,
+                    onChanged: (v) => ref.read(selectMinuteState.notifier).state = v ?? ref.read(selectMinuteState),
                   )
                 ),
                 const SizedBox(width: 10),
                 // 出発、到着 初期値は出発
                 SizedBox(
                   width: screenWidth * 0.22,
-                  child: CustomSelectBox<String>(
+                  child: CustomSelectBox<int>(
                     value: isArriveOrDepartureState,
                     items: isArriveOrDeparture,
-                    onChanged: (v) => ref.read(isArriveOrDepartureState.notifier).state = v,
+                    onChanged: (v) => ref.read(isArriveOrDepartureState.notifier).state = v ?? ref.read(isArriveOrDepartureState),
                   )
                 ),
               ],
